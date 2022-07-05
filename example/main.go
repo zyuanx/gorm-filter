@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	filter "github.com/pandalzy/gorm-filter"
 	"log"
+
+	filter "github.com/pandalzy/gorm-filter"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -21,7 +21,7 @@ type UserFilter struct {
 	Username *string       `form:"username" filter:"field:username;expr:contains"`
 	Name     string        `form:"name" filter:"field:name;expr:contains"`
 	Age      []interface{} `form:"age" filter:"field:age;expr:in"`
-	Email    string        `form:"email" filter:"field:email;expr:exact"`
+	Email    string        `form:"email" filter:"field:email"`
 }
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 	}
 	var users []User
 	if db, err := filter.Query(db.Model(&User{}).Debug(), &uf); err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	} else {
 		db.Find(&users)
 	}

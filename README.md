@@ -35,6 +35,6 @@ go run main.go
 ## output
 
 ```
-[2.411ms] [rows:1] SELECT * FROM `users` WHERE username LIKE '%a%' AND name LIKE '%l%' AND age IN (20,19) AND `users`.`deleted_at` IS NULL
+[2.411ms] [rows:1] SELECT * FROM `users` WHERE `age` IN (20,19) AND `username` LIKE '%a%' AND `name` LIKE '%l%' AND `users`.`deleted_at` IS NULL
 2022/06/25 09:24:56 [{{1 2022-06-20 21:29:19 +0800 CST 2022-06-20 21:29:21 +0800 CST {0001-01-01 00:00:00 +0000 UTC false}} panda lzy 20 }]
 ```
